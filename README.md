@@ -12,7 +12,7 @@ Requirements: **Cocos2D-X: 3.x+**, **iOS 7+**
 
 Download the latest sdk version from our server:
 
-[<img src=https://github.com/Game-of-whales/GOW-SDK-IOS/wiki/img/download.png>]()
+[<img src=https://github.com/Game-of-whales/GOW-SDK-IOS/wiki/img/download.png>](https://github.com/Game-of-whales/GOW-SDK-COCOS2D-CPP/archive/v2.0.8.zip)
 
 ### C++ Installation
 
@@ -193,7 +193,7 @@ To receive information about special offer for product call **``gameofwhales::ge
 ```
 
 
-> You can find an example of using the SDK [here]().
+> You can find an example of using the SDK [here](https://github.com/Game-of-whales/GOW-SDK-COCOS2D-CPP/tree/master/Example).
 
 Run your app. The information about it began to be collected and displayed on the [dashboard](http://gameofwhales.com/documentation/dashboard). In a few days, you will get data for analyzing.
 
