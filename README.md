@@ -73,13 +73,13 @@ Send information about IAPs, for example, by using **``BOXSDK``**:
 ```cpp
 void HelloWorld::onSuccess(sdkbox::Product const& p)
 {
-    gameofwhales::json::JSON receiptJSON = gameofwhales::buildReceipt(gameofwhales::STORE_APPSTORE, p.transactionID.c_str(),            p.receiptCipheredPayload.c_str());
+    std::string receiptJSON = gameofwhales::buildReceipt(gameofwhales::STORE_APPSTORE, p.transactionID.c_str(), p.receiptCipheredPayload.c_str());
     const char * sku = p.id.c_str();
     float price = p.priceValue;
     const char * currencyCode = p.currencyCode.c_str();
     const char * transactionID = p.transactionID.c_str();
     const char * receipt = receiptJSON.dump().c_str();
-    gameofwhales::inAppPurchased(sku, price, currencyCode, transactionID, receipt);
+    gameofwhales::inAppPurchased(sku, price, currencyCode, transactionID, receiptJSON.c_str());
 ```
 
 Send user data, for example:
