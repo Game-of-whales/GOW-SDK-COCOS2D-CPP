@@ -24,14 +24,17 @@ Copy files
 
 ### Configure XCODE
 
-Add ``[YOUR_PROJECT_FOLDLER]/Classes/`` to your project
-**image: AddFilesToProject**
+Add ``[YOUR_PROJECT_FOLDLER]/Classes/`` to your project:
 
-Add ``[YOUR_PROJECT_FOLDLER]/proj.ios_mac/GameOfWhales.framework`` to your project
-**image: LinkBinaryWithLibrary**
+<img src=https://github.com/Game-of-whales/GOW-SDK-COCOS2D-CPP/wiki/img/AddFilesToProject.png>
 
-In ``Info.plist`` set ``App Transport Security Settings/Allow Arbitrary Loads`` to **YES**
-**image: AppTransportSecuritySettings**
+Add ``[YOUR_PROJECT_FOLDLER]/proj.ios_mac/GameOfWhales.framework`` to your project:
+
+<img src=https://github.com/Game-of-whales/GOW-SDK-COCOS2D-CPP/wiki/img/LinkBinaryWithLibrary.png>
+
+In ``Info.plist`` set ``App Transport Security Settings/Allow Arbitrary Loads`` to **YES**:
+
+<img src=https://github.com/Game-of-whales/GOW-SDK-COCOS2D-CPP/wiki/img/AppTransportSecuritySettings.png>
 
 
 # Code integration
