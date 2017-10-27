@@ -1,0 +1,61 @@
+{
+    "android": {
+        "iap": {
+            "items": {
+                "coin_package2": {
+                    "id": "com.cocos2dx.plugintest3"
+                }, 
+                "product_5": {
+                    "id": "product_5"
+                }, 
+                "double_coin": {
+                    "type": "non_consumable", 
+                    "id": "com.cocos2dx.non2"
+                }, 
+                "remove_ads": {
+                    "type": "non_consumable", 
+                    "id": "com.cocos2dx.non1"
+                }, 
+                "product_10": {
+                    "id": "product_10"
+                }, 
+                "product_20": {
+                    "id": "product_20"
+                }, 
+                "coin_package": {
+                    "id": "com.cocos2dx.plugintest2"
+                }
+            }, 
+            "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAqjwIq0Pw6jDC4b6qGDq1EQh119NdEX/4KuGhVp2zLoVhvP81fzTrA7Zfv11fJXG7vUzZD97eYvK1iYI/6ga4xHha3FBA0ZgEE95UUnQ0csr1tfi1mz4upPJZGbLI+XBfIa0JfhRe+qoWlKJWmhRukon7Hif9SgPls2g+92GyeV0shnRFrg4gjDU8imEvaDdT2sXukCuXyHTLGjW8r9TYHl1RehE+zdsYTJmYNxDsYSI5IT4i24lc5PYEhAKLQrYByhANnBJKkAmI7l2XeNoRMOuziGWwCntd1FjL0ELTO/pzyNlmOPJn174tHhD0Ogont8wet/Wdc7pIeQgliDbQtwIDAQAB"
+        }
+    }, 
+    "ios": {
+        "iap": {
+            "items": {
+                "coin_package2": {
+                    "id": "com.cocos2dx.plugintest3"
+                }, 
+                "product_5": {
+                    "id": "product_5"
+                }, 
+                "double_coin": {
+                    "type": "non_consumable", 
+                    "id": "com.cocos2dx.non2"
+                }, 
+                "remove_ads": {
+                    "type": "non_consumable", 
+                    "id": "com.cocos2dx.non1"
+                }, 
+                "product_10": {
+                    "id": "product_10"
+                }, 
+                "product_20": {
+                    "id": "product_20"
+                }, 
+                "coin_package": {
+                    "id": "com.cocos2dx.plugintest2"
+                }
+            }
+        }
+    }
+}
