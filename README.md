@@ -78,7 +78,6 @@ void HelloWorld::onSuccess(sdkbox::Product const& p)
     float price = p.priceValue;
     const char * currencyCode = p.currencyCode.c_str();
     const char * transactionID = p.transactionID.c_str();
-    const char * receipt = receiptJSON.dump().c_str();
     gameofwhales::inAppPurchased(sku, price, currencyCode, transactionID, receiptJSON.c_str());
 ```
 
