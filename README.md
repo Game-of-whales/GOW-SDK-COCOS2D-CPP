@@ -12,7 +12,7 @@ Requirements: **Cocos2D-X: 3.x+**, **iOS 7+**
 
 Download the latest sdk version from our server:
 
-[<img src=https://github.com/Game-of-whales/GOW-SDK-IOS/wiki/img/download.png>](https://github.com/Game-of-whales/GOW-SDK-COCOS2D-CPP/archive/v2.0.8.zip)
+[<img src=https://github.com/Game-of-whales/GOW-SDK-UNITY/wiki/img/download.png>](https://github.com/Game-of-whales/GOW-SDK-COCOS2D-CPP/archive/v2.0.8.zip)
 
 ### C++ Installation
 
@@ -26,15 +26,16 @@ Copy files
 
 Add ``[YOUR_PROJECT_FOLDLER]/Classes/`` to your project:
 
-<img src=https://github.com/Game-of-whales/GOW-SDK-COCOS2D-CPP/wiki/img/AddFilesToProject.png>
+<img src=http://www.gameofwhales.com/sites/default/files/documentation/cocos_AddFilesToProject.png>
 
 Add ``[YOUR_PROJECT_FOLDLER]/proj.ios_mac/GameOfWhales.framework`` to your project:
 
-<img src=https://github.com/Game-of-whales/GOW-SDK-COCOS2D-CPP/wiki/img/LinkBinaryWithLibrary.png>
+<img src=http://www.gameofwhales.com/sites/default/files/documentation/cocos_LinkBinaryWithLibrary.png>
 
 In ``Info.plist`` set ``App Transport Security Settings/Allow Arbitrary Loads`` to **YES**:
 
-<img src=https://github.com/Game-of-whales/GOW-SDK-COCOS2D-CPP/wiki/img/AppTransportSecuritySettings.png>
+<img src=http://www.gameofwhales.com/sites/default/files/documentation/cocos_AppTransportSecuritySettings.png>
+
 
 
 # Code integration
@@ -155,6 +156,8 @@ fetchCompletionHandler:(void (^)(UIBackgroundFetchResult result))completionHandl
     [[GW shared] receivedRemoteNotification:userInfo withApplication:application fetchCompletionHandler:completionHandler];
 }
 ```
+
+In order to check notifications implementation send [a test notification](http://www.gameofwhales.com/documentation/how-send-test-push-notification).
 
 
 ## Special Offers
