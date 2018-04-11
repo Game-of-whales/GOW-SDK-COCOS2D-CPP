@@ -101,6 +101,7 @@ Send information about user currency consuming, for example:
     const char * place = "shop";
     gameofwhales::consume("currency, itemCost, itemName, amount, place);
 ```
+It means that someone spent 1000 "coins" for 1 "item1" in "shop".
 
 Send information about user currency obtainment, for example:
 ```cpp
@@ -111,6 +112,8 @@ Send information about user currency obtainment, for example:
     const char * place = "bank";
     gameofwhales::acquire(currency, value, itemName, amount, place);
 ```
+It means that someone has acquired 5000 "coins" for 1 "yourgame.product.iap" in "bank".
+
 
 
 ## Push notifications
