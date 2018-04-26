@@ -82,6 +82,9 @@ void HelloWorld::onSuccess(sdkbox::Product const& p)
     gameofwhales::inAppPurchased(sku, price, currencyCode, transactionID, receiptJSON.c_str());
 ```
 
+>Check that *Android Bundle Identifier* and *Android Public License Key* have been filled on [*Game Settings*](https://www.gameofwhales.com/documentation/game#game-settings) page before you will make a purchase.
+
+
 Send user data, for example:
 ```cpp
     gameofwhales::json::JSON data;
@@ -91,6 +94,11 @@ Send user data, for example:
     data["class"] = _playerData.getSpeciality();
     gameofwhales::profile(data.dump().c_str());
 ```
+
+>If you send more than 3000 properties, **Game of Whales** will sort all properties alphabetically and will save only the first 3000.
+
+>If the length of a string-type property is more than 64 characters, **Game of Whales** will save only the first 64 characters.
+
 
 Send information about user currency consuming, for example:
 ```cpp
