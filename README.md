@@ -9,7 +9,7 @@ Requirements: **Cocos2D-X: 3.x+**, **iOS 7+**
     
 # Changelog
  
-### 2.0.14 (Jun 30, 2018)
+### 2.0.14 (Jun 29, 2018)
 
 ADDED
 
@@ -33,7 +33,7 @@ void onPushDelivered(const gameofwhales::SpecialOffer * so, const char* camp, co
 
 Download the latest sdk version from our server:
 
-[<img src=https://github.com/Game-of-whales/GOW-SDK-UNITY/wiki/img/download.png>](https://github.com/Game-of-whales/GOW-SDK-COCOS2D-CPP/archive/v2.0.8.zip)
+[<img src=https://github.com/Game-of-whales/GOW-SDK-UNITY/wiki/img/download.png>](https://github.com/Game-of-whales/GOW-SDK-COCOS2D-CPP/releases/download/v2.0.14/gow-cocos-sdk-2.0.14.zip)
 
 ### C++ Installation
 
