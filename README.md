@@ -6,7 +6,28 @@ Supported lanuages: **C++**
 
 Requirements: **Cocos2D-X: 3.x+**, **iOS 7+**
     
+    
+# Changelog
+ 
+### 2.0.14 (Jun 30, 2018)
 
+ADDED
+
+* _Custom data_ is supported for special offers.
+* The information about a device's locale is sent to **Game of Whales**.
+
+MODIFIED
+
+* Push notification about special offer comes at the same time with the special offer (new parameter ``offer`` was added):
+
+```cpp
+void onPushDelivered(const gameofwhales::SpecialOffer * so, const char* camp, const char* title, const char* message)
+```
+
+* Static methods were added instead of ``shared`` methods.
+    
+
+# Implementation Guide
 
 ## SETUP
 
@@ -42,7 +63,7 @@ In ``Info.plist`` set ``App Transport Security Settings/Allow Arbitrary Loads`` 
 
 **C++**
 
-Initialize SDK with your [game key](http://www.gameofwhales.com/documentation/game).
+Initialize SDK with your [game key](https://www.gameofwhales.com/documentation/game).
 ```cpp
 #include "GameOfWhales/GameOfWhales.h"
 ...
@@ -64,7 +85,7 @@ Implement needed listener's methods
 ```cpp
         void specialOfferAppeared(const SpecialOffer& offer) override;
         void specialOfferDisappeared(const SpecialOffer& offer) override;
-        void onPushDelivered(const char* camp, const char* title, const char* message) override;
+        void onPushDelivered(const gameofwhales::SpecialOffer * so, const char* camp, const char* title, const char* message) override;
         void onPurchaseVerified(const char* transactionID, gameofwhales::PURCHASE_STATE state) override;
 ```
 
@@ -126,7 +147,7 @@ It means that someone has acquired 5000 "coins" for 1 "yourgame.product.iap" in 
 
 ## Push notifications
 
-You need to do this chapter steps only if you want to use [push notifications](http://www.gameofwhales.com/documentation/push-notifications) in your app.
+You need to do this chapter steps only if you want to use [push notifications](https://www.gameofwhales.com/documentation/push-notifications) in your app.
 
 In order to request permission for push notifications, add code to your **``AppDelegate``** class, for example:
 ```objc
@@ -168,7 +189,7 @@ fetchCompletionHandler:(void (^)(UIBackgroundFetchResult result))completionHandl
 }
 ```
 
-In order to check notifications implementation send [a test notification](http://www.gameofwhales.com/documentation/how-send-test-push-notification).
+In order to check notifications implementation send [a test notification](https://www.gameofwhales.com/documentation/how-send-test-push-notification).
 
 
 ## Special Offers
@@ -177,7 +198,7 @@ Before any product can be used in a special offer it has to be bought by someone
 If you want to create a special offer for in game resource, please, make sure your game has at least one _converting_ event with the appropriate resource.
 
 
-You need to do this chapter steps only if you want to use [special offers](http://www.gameofwhales.com/documentation/special-offers) from **Game of Whales** in your app.
+You need to do this chapter steps only if you want to use [special offers](https://www.gameofwhales.com/documentation/special-offers) from **Game of Whales** in your app.
 
 To get information about special offers changes implement next listener's methods:
 ```cpp
@@ -210,9 +231,19 @@ To receive information about special offer for product call **``gameofwhales::ge
     
 ```
 
+## Special offers custom data
+
+It's possible to pass [custom data](https://www.gameofwhales.com/documentation/custom-data) to special offers. In order to get the data in game's side, use ``customValues`` parameter of ``SpecialOffer`` class.
+
+```cpp
+    string str = offer.customValues["your_string"];
+    int number = atoi(offer.customValues["your_number"].c_str()); 
+    bool boolean = atoi(offer.customValues["your_bool"].c_str()); 
+```
+
 
 > You can find an example of using the SDK [here](https://github.com/Game-of-whales/GOW-SDK-COCOS2D-CPP/tree/master/Example).
 
-Run your app. The information about it began to be collected and displayed on the [dashboard](http://gameofwhales.com/documentation/dashboard). In a few days, you will get data for analyzing.
+Run your app. The information about it began to be collected and displayed on the [dashboard](https://gameofwhales.com/documentation/dashboard). In a few days, you will get data for analyzing.
 
-This article includes the documentation for _Game of Whales Cocos2D SDK_. You can find information about other SDKs in [documentation about Game of Whales](http://www.gameofwhales.com/documentation/download-setup).
+This article includes the documentation for _Game of Whales Cocos2D SDK_. You can find information about other SDKs in [documentation about Game of Whales](https://www.gameofwhales.com/documentation/download-setup).
