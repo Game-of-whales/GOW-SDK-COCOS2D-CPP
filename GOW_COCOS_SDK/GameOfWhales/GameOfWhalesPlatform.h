@@ -1,3 +1,14 @@
+/*
+ * Game Of Whales SDK
+ *
+ * https://www.gameofwhales.com/
+ *
+ * Copyright © 2018 GameOfWhales. All rights reserved.
+ *
+ * Licence: https://github.com/Game-of-whales/GOW-SDK-COCOS2D-CPP/blob/master/LICENSE
+ *
+ */
+
 #ifndef __GAME_OF_WHALES__COCOS__HEADER__
 #define __GAME_OF_WHALES__COCOS__HEADER__
 
@@ -9,16 +20,19 @@
 #define GAMEOFWHALES_PLATFORM "cocos2dcpp"
 
 
-//IOS
+
+//ANDROID
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
     #define GAMEOFWHALES_ANDROID 1
 
-//ANDROID
+//IOS
 #elif (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
     #define GAMEOFWHALES_IOS 1
 
-#else//UNSUPPORTED
+//UNSUPPORTED
+#else
     #define GAMEOFWHALES_UNSUPPORTED 1
+
 #endif
 
 

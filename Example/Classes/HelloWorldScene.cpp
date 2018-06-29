@@ -1,3 +1,14 @@
+/*
+ * Game Of Whales SDK
+ *
+ * https://www.gameofwhales.com/
+ *
+ * Copyright © 2018 GameOfWhales. All rights reserved.
+ *
+ * Licence: https://github.com/Game-of-whales/GOW-SDK-COCOS2D-CPP/blob/master/LICENSE
+ *
+ */
+
 #include "HelloWorldScene.h"
 #include "SimpleAudioEngine.h"
 #include "GameOfWhales/GameOfWhales.h"
@@ -27,7 +38,9 @@ bool HelloWorld::init()
         return false;
     }
     
-    gameofwhales::initialize("YOUR_GAMEKEY", true);
+    gameofwhales::initialize("585026b7f365603dd4e70d4d", true);//ios
+    //gameofwhales::initialize("58ff3e2e30bb6d070389ef0f", true);//android
+
     gameofwhales::addListener(this);
     
     _playerData.load();
@@ -229,8 +242,32 @@ string HelloWorld::formatedLeftTime(long left)
     return buffer;
 }
 
-void HelloWorld::onPushDelivered(const char* camp, const char* title, const char* message)
+void HelloWorld::specialOfferAppeared(const gameofwhales::SpecialOffer& offer)
 {
+    CCLOG("HelloWorld specialOfferAppeared");
+    
+    map<string, string>::const_iterator it;
+    for (it = offer.customValues.begin(); it != offer.customValues.end(); ++it)
+    {
+        CCLOG("HelloWorld custom %s : %s", it->first.c_str(), it->second.c_str());
+    }
+    
+}
+
+void HelloWorld::specialOfferDisappeared(const gameofwhales::SpecialOffer& offer)
+{
+    CCLOG("HelloWorld specialOfferDisappeared");
+}
+
+void HelloWorld::onPushDelivered(const gameofwhales::SpecialOffer * so, const char* camp, const char* title, const char* message)
+{
+    CCLOG("HelloWorld onPushDelivered");
+    
+    if (so)
+    {
+        CCLOG("onPushDelivered Special Offer Product: %s", so->product.c_str());
+    }
+    
     _messageTitle->setString(title);
     _messageMessage->setString(message);
     
@@ -260,8 +297,10 @@ void HelloWorld::updatePlayerTexts(bool sendInfo)
     
     if (offer && offer->hasPriceFactor() && !offer->isExpiried())
     {
+        //offer->customValues
+        
         price *= offer->priceFactor;
-        sprintf(text, "BUY ITEM 1 FOR %.0f (-%d%%) \n left: %s", price, 100 - int(offer->priceFactor * 100.0f), formatedLeftTime(offer->getLeftTime()).c_str());
+        sprintf(text, "BUY ITEM 1 FOR %.0f (-%d%%) \n left: %s %s", price, 100 - int(offer->priceFactor * 100.0f), formatedLeftTime(offer->getLeftTime()).c_str());
     }
     else
     {

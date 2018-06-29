@@ -1,3 +1,14 @@
+/*
+ * Game Of Whales SDK
+ *
+ * https://www.gameofwhales.com/
+ *
+ * Copyright © 2018 GameOfWhales. All rights reserved.
+ *
+ * Licence: https://github.com/Game-of-whales/GOW-SDK-COCOS2D-CPP/blob/master/LICENSE
+ *
+ */
+
 #ifndef __GAME_OF_WHALES__IOS__HEADER__
 #define __GAME_OF_WHALES__IOS__HEADER__
 

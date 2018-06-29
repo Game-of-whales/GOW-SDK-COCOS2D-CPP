@@ -24,10 +24,11 @@
  ****************************************************************************/
 
 #import <UIKit/UIKit.h>
+#import <UserNotifications/UserNotifications.h>
 
 @class RootViewController;
 
-@interface AppController : NSObject <UIApplicationDelegate> {
+@interface AppController : UIResponder <UIApplicationDelegate, UNUserNotificationCenterDelegate> {
 
 }
 

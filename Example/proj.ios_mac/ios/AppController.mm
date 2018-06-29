@@ -80,25 +80,56 @@ static AppDelegate s_sharedApplication;
     //run the cocos2d-x game scene
     app->run();
     
-    //[UNUserNotificationCenter currentNotificationCenter].delegate = self;
-    UNAuthorizationOptions authOptions =
-    UNAuthorizationOptionAlert
-    | UNAuthorizationOptionSound
-    | UNAuthorizationOptionBadge;
-    [[UNUserNotificationCenter currentNotificationCenter] requestAuthorizationWithOptions:authOptions completionHandler:^(BOOL granted, NSError * _Nullable error) {
+    
+    //IOS 9-
+    /*UIUserNotificationType userNotificationTypes = (UIUserNotificationTypeAlert |
+                                                    UIUserNotificationTypeBadge |
+                                                    UIUserNotificationTypeSound);
+    UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:userNotificationTypes
+                                                                             categories:nil];
+    [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+    [[UIApplication sharedApplication] registerForRemoteNotifications];
+     */
+    
+    
+    //IOS 10+
+    /*UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
+    center.delegate = self;
+    [center requestAuthorizationWithOptions:(UNAuthorizationOptionSound | UNAuthorizationOptionAlert | UNAuthorizationOptionBadge) completionHandler:^(BOOL granted, NSError * _Nullable error){
         if(!error){
-            dispatch_async(dispatch_get_main_queue(), ^{
-                 [[UIApplication sharedApplication] registerForRemoteNotifications];
-            }); 
+            [[UIApplication sharedApplication] registerForRemoteNotifications];
         }
-    }];
+    }];*/
+    
     
     return YES;
 }
 
+/*– (void)registerForRemoteNotifications {
+    if(SYSTEM_VERSION_GRATERTHAN_OR_EQUALTO(@”10.0″)){
+        UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
+        center.delegate = self;
+        [center requestAuthorizationWithOptions:(UNAuthorizationOptionSound | UNAuthorizationOptionAlert | UNAuthorizationOptionBadge) completionHandler:^(BOOL granted, NSError * _Nullable error){
+            if(!error){
+                [[UIApplication sharedApplication] registerForRemoteNotifications];
+            }
+        }];
+    }
+    else {
+        // Code for old versions
+        UIUserNotificationType userNotificationTypes = (UIUserNotificationTypeAlert |
+                                                        UIUserNotificationTypeBadge |
+                                                        UIUserNotificationTypeSound);
+        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:userNotificationTypes
+                                                                                 categories:nil];
+        [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+        [[UIApplication sharedApplication] registerForRemoteNotifications];
+    }
+}*/
+
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     //NSLog("didRegisterForRemoteNotificationsWithDeviceToken %@", deviceToken);
-    [[GW shared] registerDeviceTokenWithData: deviceToken provider:GW_PROVIDER_APN];
+    [GW RegisterDeviceTokenWithData:deviceToken provider:GW_PROVIDER_APN];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
@@ -129,7 +160,7 @@ static AppDelegate s_sharedApplication;
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
 fetchCompletionHandler:(void (^)(UIBackgroundFetchResult result))completionHandler
 {
-    [[GW shared] receivedRemoteNotification:userInfo withApplication:application fetchCompletionHandler:completionHandler];
+    [GW ReceivedRemoteNotification:userInfo withApplication:application fetchCompletionHandler:completionHandler];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {

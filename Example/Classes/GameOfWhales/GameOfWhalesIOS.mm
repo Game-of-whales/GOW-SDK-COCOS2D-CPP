@@ -1,3 +1,13 @@
+/*
+ * Game Of Whales SDK
+ *
+ * https://www.gameofwhales.com/
+ *
+ * Copyright © 2018 GameOfWhales. All rights reserved.
+ *
+ * Licence: https://github.com/Game-of-whales/GOW-SDK-COCOS2D-CPP/blob/master/LICENSE
+ *
+ */
 #include "GameOfWhalesIOS.h"
 #if GAMEOFWHALES_IOS == 1
 
@@ -11,6 +21,12 @@
 
 static GameOfWhalesProxy * gw_proxyInstance = nil;
 static NSDictionary * gw_launchOptions = nil;
+
+namespace gameofwhales {
+    extern char* VERIFY_STATE_LEGAL;
+    extern char* VERIFY_STATE_ILLEGAL;
+    extern char* VERIFY_STATE_UNDEFINED;
+}
 
 using namespace gameofwhales;
 
@@ -68,7 +84,7 @@ bool GW_isPCharValid(const char* value)
     
         NSString * tokenResult = [token copy];
         NSLog(@"GameOfWhalesProxy IOS %@", tokenResult);
-        [[GW shared] registerDeviceTokenWithString:tokenResult provider:GW_PROVIDER_APN];
+        [GW RegisterDeviceTokenWithString:tokenResult provider:GW_PROVIDER_APN];
     }
     @catch(NSException* e)
     {
@@ -112,6 +128,15 @@ bool GW_isPCharValid(const char* value)
         offer_p->priceFactor = specialOffer.priceFactor;
         offer_p->redeemable = specialOffer.redeemable;
         offer_p->finishedAt = [specialOffer.finishedAt timeIntervalSince1970];
+        for (NSString *key in specialOffer.customValues) {
+            
+            NSObject * obj = [specialOffer.customValues objectForKey:key];
+            NSString * value = [NSString stringWithFormat:@"%@", obj];
+            offer_p->customValues[[key UTF8String]] = [value UTF8String];
+        }
+        
+        
+        //specialOffer.cus
         
         gameofwhales::internal::notify_specialOfferAppeared(offer_p);
         
@@ -139,7 +164,7 @@ bool GW_isPCharValid(const char* value)
 }
 
 
-- (void)onPushDelivered:(nonnull NSString *)camp title:(nonnull NSString*)title message:(nonnull NSString*)message
+- (void)onPushDelivered:(nullable GWSpecialOffer*)offer camp:(nonnull NSString *)camp title:(nonnull NSString*)title message:(nonnull NSString*)message
 {
     @try {
         NSLog(@"GameOfWhalesProxy onPushDelivered");
@@ -159,8 +184,17 @@ bool GW_isPCharValid(const char* value)
         std::string title_str = std::string([title UTF8String], [title lengthOfBytesUsingEncoding:NSUTF8StringEncoding]);
         std::string message_str = std::string([message UTF8String], [message lengthOfBytesUsingEncoding:NSUTF8StringEncoding]);
         
+        std::string offerProduct;
+        const SpecialOffer * so = 0;
+        if (offer != nil)
+        {
+            offerProduct = std::string([offer.product UTF8String], [offer.product lengthOfBytesUsingEncoding:NSUTF8StringEncoding]);
+            
+            so = gameofwhales::getSpecialOffer(offerProduct.c_str());
+        }
+
         
-        gameofwhales::internal::notify_onPushDelivered(camp_str.c_str(), title_str.c_str(), message_str.c_str());
+        gameofwhales::internal::notify_onPushDelivered(so, camp_str.c_str(), title_str.c_str(), message_str.c_str());
     }
     @catch(NSException* e)
     {
@@ -173,10 +207,25 @@ bool GW_isPCharValid(const char* value)
     @try {
         NSLog(@"GameOfWhalesProxy onPurchaseVerified");
         
-        NSMutableDictionary * dict = [[NSMutableDictionary alloc] initWithCapacity:5];
-        [dict setValue:transactionID forKey:@"transactionID" ];
-        [dict setValue:state forKey:@"verifyState" ];
-        //[self unitySendMethod:@"Internal_OnPurchaseVerified" param:dict];
+        //NSMutableDictionary * dict = [[NSMutableDictionary alloc] initWithCapacity:5];
+        //[dict setValue:transactionID forKey:@"transactionID" ];
+        //[dict setValue:state forKey:@"verifyState" ];
+        
+        std::string transactionID_str = std::string([transactionID UTF8String], [transactionID lengthOfBytesUsingEncoding:NSUTF8StringEncoding]);
+        std::string state_str = std::string([state UTF8String], [state lengthOfBytesUsingEncoding:NSUTF8StringEncoding]);
+        
+        gameofwhales::PURCHASE_STATE state = gameofwhales::PURCHASE_STATE::UNDEFINED;
+        if (state_str == VERIFY_STATE_ILLEGAL)
+        {
+            state = gameofwhales::PURCHASE_STATE::ILLEGAL;
+        }
+        
+        if (state_str == VERIFY_STATE_UNDEFINED)
+        {
+            state = gameofwhales::PURCHASE_STATE::LEGAL;
+        }
+        
+        gameofwhales::internal::notify_onPurchaseVerified(transactionID_str.c_str(), state);
     }
     @catch(NSException* e)
     {
@@ -210,8 +259,8 @@ namespace gameofwhales {
             
                 GW_PLATFORM = nsPlatform;
                 GW_VERSION = nsVersion;
-                [GW initializeWithGameKey:nsGameKey :gw_launchOptions :debug];
-                [[GW shared] addDelegate:gw_proxyInstance];
+                [GW InitializeWithGameKey:nsGameKey :gw_launchOptions :debug];
+                [GW AddDelegate:gw_proxyInstance];
             }
             @catch(NSException* e)
             {
@@ -234,7 +283,7 @@ namespace gameofwhales {
                 NSString * nsTransactionID = [[NSString alloc] initWithUTF8String:transactionID];
                 NSString * nsReceipt = [[NSString alloc] initWithUTF8String:receipt];
                 
-                [[GW shared] inAppPurchased:nsSku :price :nsCurrency :nsTransactionID :nsReceipt];
+                [GW InAppPurchased:nsSku :price :nsCurrency :nsTransactionID :nsReceipt];
             }
             @catch(NSException* e)
             {
@@ -253,7 +302,7 @@ namespace gameofwhales {
                 NSString *nsToken = [[NSString alloc] initWithUTF8String:token];
                 NSString *nsProvider = [[NSString alloc] initWithUTF8String:provider];
                 
-                [[GW shared] registerDeviceTokenWithString:nsToken provider:nsProvider];
+                [GW RegisterDeviceTokenWithString:nsToken provider:nsProvider];
             }
             @catch(NSException* e)
             {
@@ -270,7 +319,7 @@ namespace gameofwhales {
             @try
             {
                 NSString *nsCampID = [[NSString alloc] initWithUTF8String:camp];
-                [[GW shared] reactedRemoteNotificationWithCampaign:nsCampID];
+                [GW ReactedRemoteNotificationWithCampaign:nsCampID];
             }
             @catch(NSException* e)
             {
@@ -289,7 +338,7 @@ namespace gameofwhales {
                 
                 NSString *nsResources = [[NSString alloc] initWithUTF8String:json_resources];
                 NSString *nsPlace = [[NSString alloc] initWithUTF8String:place];
-                [[GW shared] convertingWithString:nsResources place:nsPlace];
+                [GW ConvertingWithString:nsResources place:nsPlace];
             }
             @catch(NSException* e)
             {
@@ -305,7 +354,7 @@ namespace gameofwhales {
                 GW_CHECK_CHAR(json_changed_params, profile);
                 
                 NSString *nsParams = [[NSString alloc] initWithUTF8String:json_changed_params];
-                [[GW shared] profileWithString:nsParams];
+                [GW ProfileWithString:nsParams];
             }
             @catch(NSException* e)
             {
@@ -329,7 +378,7 @@ namespace gameofwhales {
                 NSNumber *nsNumber = [NSNumber numberWithInt:number];
                 NSNumber *nsAmount = [NSNumber numberWithInt:amount];
                 
-                [[GW shared] consumeCurrency:nsCurrency number:nsNumber sink:nsSink amount:nsAmount place:nsPlace];
+                [GW ConsumeCurrency:nsCurrency number:nsNumber sink:nsSink amount:nsAmount place:nsPlace];
             }
             @catch(NSException* e)
             {
@@ -353,7 +402,7 @@ namespace gameofwhales {
                 NSNumber *nsAmount = [NSNumber numberWithInt:amount];
                 NSNumber *nsNumber = [NSNumber numberWithInt:number];
                 
-                [[GW shared] acquireCurrency:nsCurrency amount:nsAmount source:nsSource number:nsNumber place:nsPlace];
+                [GW AcquireCurrency:nsCurrency amount:nsAmount source:nsSource number:nsNumber place:nsPlace];
             }
             @catch(NSException* e)
             {
@@ -371,7 +420,7 @@ namespace gameofwhales {
                 
                 NSString * nsMessage = [[NSString alloc] initWithUTF8String:message];
                 NSString * nsStacktrace = [[NSString alloc] initWithUTF8String:stacktrace];
-                [[GW shared] reportError:nsMessage :nsStacktrace];
+                [GW ReportError:nsMessage :nsStacktrace];
             }
             @catch(NSException* e)
             {

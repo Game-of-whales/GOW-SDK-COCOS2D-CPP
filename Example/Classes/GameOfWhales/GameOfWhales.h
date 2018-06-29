@@ -1,10 +1,20 @@
+/*
+ * Game Of Whales SDK
+ *
+ * https://www.gameofwhales.com/
+ *
+ * Copyright © 2018 GameOfWhales. All rights reserved.
+ *
+ * Licence: https://github.com/Game-of-whales/GOW-SDK-COCOS2D-CPP/blob/master/LICENSE
+ *
+ */
 
 #ifndef __GAME_OF_WHALES__HEADER__
 #define __GAME_OF_WHALES__HEADER__
 
 #include "GameOfWhalesPlatform.h"
 #include "GameOfWhalesListener.h"
-#include "GameOfWhalesJSON.hpp"
+#include "GameOfWhalesJSON.h"
 
 #include <vector>
 #include <string>
@@ -47,7 +57,7 @@ namespace gameofwhales {
     
     namespace internal
     {
-        void notify_onPushDelivered(const char* camp, const char* title, const char* message);
+        void notify_onPushDelivered(const SpecialOffer * so, const char* camp, const char* title, const char* message);
         void notify_specialOfferAppeared(const SpecialOffer * offer);
         void notify_specialOfferDisappeared(const std::string& product);
         void notify_onPurchaseVerified(const char* transactionID, gameofwhales::PURCHASE_STATE state);

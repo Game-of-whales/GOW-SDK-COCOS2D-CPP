@@ -64,7 +64,6 @@
 		52B47A471A53D09C004E4C60 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52B47A461A53D09B004E4C60 /* Security.framework */; };
 		8262943E1AAF051F00CB7CF7 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8262943D1AAF051F00CB7CF7 /* Security.framework */; };
 		920158A61F7288150036535F /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 920158A51F7288150036535F /* StoreKit.framework */; };
-		920158AB1F7288C20036535F /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 920158AA1F7288C20036535F /* UserNotifications.framework */; };
 		920D69531F6A9B0200163AFC /* gowlogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 920D69511F6A9B0200163AFC /* gowlogo.png */; };
 		920D69541F6A9B0200163AFC /* panel.png in Resources */ = {isa = PBXBuildFile; fileRef = 920D69521F6A9B0200163AFC /* panel.png */; };
 		920D695A1F6AA39000163AFC /* button-left.png in Resources */ = {isa = PBXBuildFile; fileRef = 920D69581F6AA39000163AFC /* button-left.png */; };
@@ -79,6 +78,7 @@
 		9271F2A91F71377B000F5729 /* GameOfWhalesIOS.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9271F2A21F71377B000F5729 /* GameOfWhalesIOS.mm */; };
 		9271F2AC1F714FF8000F5729 /* GameOfWhales.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9271F2AB1F714FF8000F5729 /* GameOfWhales.framework */; };
 		92A27F6D1F73DAA000DBBCA5 /* GameOfWhalesUnsupported.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92A27F6B1F73DAA000DBBCA5 /* GameOfWhalesUnsupported.cpp */; };
+		92C68D6A1FB1DC9600709C6C /* GameOfWhalesJSON.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 92C68D691FB1DC9600709C6C /* GameOfWhalesJSON.cpp */; };
 		92FF41EE1F7530AE00A34D9C /* msgbox.png in Resources */ = {isa = PBXBuildFile; fileRef = 92FF41ED1F7530AE00A34D9C /* msgbox.png */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712471292920000B8313A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
@@ -142,6 +142,7 @@
 		294D0D631D0D56D500F7F5D4 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/CoreText.framework; sourceTree = DEVELOPER_DIR; };
 		30D84FEBACDF8B408D03DF7D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
 		3EACC98E19EE6D4300EB3C5E /* res */ = {isa = PBXFileReference; lastKnownFileType = folder; path = res; sourceTree = "<group>"; };
+		3EF149B620E60E2C00A227AF /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.2.sdk/System/Library/Frameworks/UserNotifications.framework; sourceTree = DEVELOPER_DIR; };
 		46880B7619C43A67006E1F66 /* CloseNormal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CloseNormal.png; sourceTree = "<group>"; };
 		46880B7719C43A67006E1F66 /* CloseSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CloseSelected.png; sourceTree = "<group>"; };
 		46880B7A19C43A67006E1F66 /* HelloWorld.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HelloWorld.png; sourceTree = "<group>"; };
@@ -209,9 +210,10 @@
 		9271F2A31F71377B000F5729 /* GameOfWhalesIOS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameOfWhalesIOS.h; path = GameOfWhales/GameOfWhalesIOS.h; sourceTree = "<group>"; };
 		9271F2A61F71377B000F5729 /* GameOfWhalesPlatform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameOfWhalesPlatform.h; path = GameOfWhales/GameOfWhalesPlatform.h; sourceTree = "<group>"; };
 		9271F2AB1F714FF8000F5729 /* GameOfWhales.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GameOfWhales.framework; sourceTree = "<group>"; };
-		92A27F671F73D1E200DBBCA5 /* GameOfWhalesJSON.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = GameOfWhalesJSON.hpp; path = GameOfWhales/GameOfWhalesJSON.hpp; sourceTree = "<group>"; };
 		92A27F6B1F73DAA000DBBCA5 /* GameOfWhalesUnsupported.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GameOfWhalesUnsupported.cpp; path = GameOfWhales/GameOfWhalesUnsupported.cpp; sourceTree = "<group>"; };
 		92A27F6C1F73DAA000DBBCA5 /* GameOfWhalesUnsupported.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameOfWhalesUnsupported.h; path = GameOfWhales/GameOfWhalesUnsupported.h; sourceTree = "<group>"; };
+		92C68D681FB1DC9600709C6C /* GameOfWhalesJSON.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GameOfWhalesJSON.h; path = GameOfWhales/GameOfWhalesJSON.h; sourceTree = "<group>"; };
+		92C68D691FB1DC9600709C6C /* GameOfWhalesJSON.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = GameOfWhalesJSON.cpp; path = GameOfWhales/GameOfWhalesJSON.cpp; sourceTree = "<group>"; };
 		92FF41ED1F7530AE00A34D9C /* msgbox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = msgbox.png; sourceTree = "<group>"; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
@@ -230,7 +232,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				9271F2AC1F714FF8000F5729 /* GameOfWhales.framework in Frameworks */,
-				920158AB1F7288C20036535F /* UserNotifications.framework in Frameworks */,
 				294D0D641D0D56D500F7F5D4 /* CoreText.framework in Frameworks */,
 				ED545A7C1B68A1F400C3958E /* libiconv.dylib in Frameworks */,
 				52B47A471A53D09C004E4C60 /* Security.framework in Frameworks */,
@@ -327,6 +328,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3EF149B620E60E2C00A227AF /* UserNotifications.framework */,
 				920158AA1F7288C20036535F /* UserNotifications.framework */,
 				920158A81F72885A0036535F /* NotificationCenter.framework */,
 				920158A51F7288150036535F /* StoreKit.framework */,
@@ -445,9 +447,10 @@
 		9271F29D1F713764000F5729 /* GameOfWhales */ = {
 			isa = PBXGroup;
 			children = (
+				92C68D691FB1DC9600709C6C /* GameOfWhalesJSON.cpp */,
+				92C68D681FB1DC9600709C6C /* GameOfWhalesJSON.h */,
 				92A27F6B1F73DAA000DBBCA5 /* GameOfWhalesUnsupported.cpp */,
 				92A27F6C1F73DAA000DBBCA5 /* GameOfWhalesUnsupported.h */,
-				92A27F671F73D1E200DBBCA5 /* GameOfWhalesJSON.hpp */,
 				923AB3941F72A8EB00AAA5F6 /* GameOfWhalesListener.cpp */,
 				923AB3951F72A8EB00AAA5F6 /* GameOfWhalesListener.h */,
 				9271F29E1F71377B000F5729 /* GameOfWhales.cpp */,
@@ -508,7 +511,11 @@
 				TargetAttributes = {
 					1D6058900D05DD3D006BFB54 = {
 						DevelopmentTeam = 2CF9M4J7ZH;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
 							com.apple.DataProtection = {
 								enabled = 0;
 							};
@@ -638,6 +645,7 @@
 			files = (
 				92A27F6D1F73DAA000DBBCA5 /* GameOfWhalesUnsupported.cpp in Sources */,
 				46880B8819C43A87006E1F66 /* AppDelegate.cpp in Sources */,
+				92C68D6A1FB1DC9600709C6C /* GameOfWhalesJSON.cpp in Sources */,
 				46880B8A19C43A87006E1F66 /* HelloWorldScene.cpp in Sources */,
 				9271F2A71F71377B000F5729 /* GameOfWhales.cpp in Sources */,
 				9271F28E1F6FDE49000F5729 /* PlayerData.cpp in Sources */,
@@ -682,6 +690,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "GameOfWhales_Cocos-mobile.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COMPRESS_PNG_FILES = NO;
 				DEVELOPMENT_TEAM = 2CF9M4J7ZH;
 				ENABLE_BITCODE = NO;
@@ -701,7 +710,8 @@
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = ios/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"\"sdkbox.framework\"",
 					"\"PluginIAP.framework\"",
@@ -716,6 +726,8 @@
 					"$(_COCOS_LIB_IOS_END)",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.gameofwhales.native.ios;
+				PROVISIONING_PROFILE = "ffda2ca6-4f37-4bc7-b07f-382ebc356546";
+				PROVISIONING_PROFILE_SPECIFIER = "GOW Native-Development_New";
 				SDKROOT = iphoneos11.0;
 				STRIP_PNG_TEXT = NO;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -749,7 +761,8 @@
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = ios/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"\"sdkbox.framework\"",
 					"\"PluginIAP.framework\"",
@@ -760,6 +773,8 @@
 					"$(_COCOS_LIB_IOS_END)",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.gameofwhales.native.ios;
+				PROVISIONING_PROFILE = "ffda2ca6-4f37-4bc7-b07f-382ebc356546";
+				PROVISIONING_PROFILE_SPECIFIER = "GOW Native-Development_New";
 				SDKROOT = iphoneos11.0;
 				STRIP_PNG_TEXT = NO;
 				TARGETED_DEVICE_FAMILY = 1;

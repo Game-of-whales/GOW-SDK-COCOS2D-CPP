@@ -1,3 +1,14 @@
+/*
+ * Game Of Whales SDK
+ *
+ * https://www.gameofwhales.com/
+ *
+ * Copyright © 2018 GameOfWhales. All rights reserved.
+ *
+ * Licence: https://github.com/Game-of-whales/GOW-SDK-COCOS2D-CPP/blob/master/LICENSE
+ *
+ */
+
 #include "GameOfWhales.h"
 #include <vector>
 
@@ -9,7 +20,6 @@
 
 
 #elif GAMEOFWHALES_ANDROID == 1//ANDROID Include
-#warning "GameOfWhales Android"
 #include "GameOfWhalesAndroid.h"
 
 
@@ -22,7 +32,7 @@
 
 namespace gameofwhales {
     
-    const char* version     = "2.0.8";
+    const char* version     = "2.0.14";
     const char* platform    = GAMEOFWHALES_PLATFORM;
     
     const char* PROVIDER_APN    = "apn";
@@ -108,11 +118,11 @@ namespace gameofwhales {
     
     namespace internal
     {
-        void notify_onPushDelivered(const char* camp, const char* title, const char* message)
+        void notify_onPushDelivered(const SpecialOffer * so, const char* camp, const char* title, const char* message)
         {
             for (auto it = listeners.begin(); it != listeners.end(); ++it)
             {
-                (*it)->onPushDelivered(camp, title, message);
+                (*it)->onPushDelivered(so, camp, title, message);
             }
         }
         
@@ -120,7 +130,7 @@ namespace gameofwhales {
         {
             if (!offer)
                 return;
-            
+
             const SpecialOffer * active_offer = getSpecialOffer(offer->product.c_str());
             if (active_offer)
             {

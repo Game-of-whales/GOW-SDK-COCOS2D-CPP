@@ -1,3 +1,14 @@
+/*
+ * Game Of Whales SDK
+ *
+ * https://www.gameofwhales.com/
+ *
+ * Copyright © 2018 GameOfWhales. All rights reserved.
+ *
+ * Licence: https://github.com/Game-of-whales/GOW-SDK-COCOS2D-CPP/blob/master/LICENSE
+ *
+ */
+
 #ifndef __HELLOWORLD_SCENE_H__
 #define __HELLOWORLD_SCENE_H__
 
@@ -58,7 +69,9 @@ public:
     void onProductRequestFailure(const std::string &msg) override;
     void onRestoreComplete(bool ok, const std::string &msg) override;
     
-    void onPushDelivered(const char* camp, const char* title, const char* message) override;
+    void onPushDelivered(const gameofwhales::SpecialOffer * so, const char* camp, const char* title, const char* message) override;
+    void specialOfferAppeared(const gameofwhales::SpecialOffer& offer) override;
+    void specialOfferDisappeared(const gameofwhales::SpecialOffer& offer) override;
 private:
     string formatedLeftTime(long left);
     
