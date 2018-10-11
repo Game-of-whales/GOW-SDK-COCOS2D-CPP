@@ -89,6 +89,13 @@ Implement needed listener's methods
         void onPurchaseVerified(const char* transactionID, gameofwhales::PURCHASE_STATE state) override;
 ```
 
+The purchase state can be:
+
+* _VERIFY_STATE_LEGAL_ - a purchase is normal.
+* _VERIFY_STATE_ILLEGAL_ - a purchase is a cheater's.
+* _VERIFY_STATE_UNDEFINED_ - GOW server couldn't define the state of a purchase. 
+
+
 ## Game Events
 
 Send information about IAPs, for example, by using **``BOXSDK``**:
