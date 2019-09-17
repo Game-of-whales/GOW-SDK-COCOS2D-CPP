@@ -123,7 +123,6 @@ Send user data, for example:
     gameofwhales::profile(data.dump().c_str());
 ```
 
->In order to work with AI offers you should send at least 5 number-type properties and at least one progress based parameter.
 
 >If you send more than 3000 properties, **Game of Whales** will sort all properties alphabetically and will save only the first 3000.
 
